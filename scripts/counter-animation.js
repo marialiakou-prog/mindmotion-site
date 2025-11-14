@@ -39,11 +39,12 @@ document.addEventListener('DOMContentLoaded', function () {
 function animateCounter(element) {
     // Get the target number from data attribute
     const target = parseInt(element.getAttribute('data-target'));
+    const prefix = element.getAttribute('data-prefix') || '';
     const duration = 2000; // Animation duration in milliseconds (2 seconds)
     const startTime = performance.now();
 
     // Set initial value to 0
-    element.textContent = '0';
+    element.textContent = prefix + '0';
 
     /**
      * Animation loop function
@@ -64,14 +65,14 @@ function animateCounter(element) {
         const current = Math.floor(easeOutProgress * target);
 
         // Update the displayed number
-        element.textContent = current;
+        element.textContent = prefix + current;
 
         // Continue animation if not finished
         if (progress < 1) {
             requestAnimationFrame(updateCounter);
         } else {
             // Ensure we end on the exact target number
-            element.textContent = target;
+            element.textContent = prefix + target;
         }
     }
 
