@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burnout Self‑Check | MindMotion</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <img src="../favicon.ico" alt="MindMotion logo" class="nav-logo">
+                <span>MindMotion</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#services" class="nav-link">Services</a></li>
+                <li><a href="../index.html#about" class="nav-link">About Us</a></li>
+                <li><a href="../index.html#success-stories" class="nav-link">Your Stories</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main style="margin-top:60px;">
+        <section class="contact">
+            <div class="contact-layout">
+                <div class="contact-left">
+                    <div class="contact-intro">
+                        <div class="contact-intro-text">
+                            <h3>Burnout Self‑Check</h3>
+                            <p>This quick reflection is not a diagnosis, but it can help you notice patterns in how work
+                                is affecting your energy, emotions and body.</p>
+                        </div>
+                    </div>
+                    <div class="contact-container">
+                        <form class="contact-form" id="burnout-form">
+                            <p style="margin-bottom:1rem;font-size:0.95rem;">
+                                For each statement, choose how often this feels true for you in the <strong>last 2–4
+                                    weeks</strong>.
+                            </p>
+
+                            <div class="form-group">
+                                <label>1. I feel emotionally drained after work.</label>
+                                <select name="q1" required>
+                                    <option value="">Select…</option>
+                                    <option value="1">Rarely</option>
+                                    <option value="2">Sometimes</option>
+                                    <option value="3">Often</option>
+                                    <option value="4">Almost always</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>2. It’s hard to switch off from work thoughts, even in my free time.</label>
+                                <select name="q2" required>
+                                    <option value="">Select…</option>
+                                    <option value="1">Rarely</option>
+                                    <option value="2">Sometimes</option>
+                                    <option value="3">Often</option>
+                                    <option value="4">Almost always</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>3. My sleep, appetite or body tension have changed because of work stress.</label>
+                                <select name="q3" required>
+                                    <option value="">Select…</option>
+                                    <option value="1">Rarely</option>
+                                    <option value="2">Sometimes</option>
+                                    <option value="3">Often</option>
+                                    <option value="4">Almost always</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>4. I feel less motivated or connected to work I used to care about.</label>
+                                <select name="q4" required>
+                                    <option value="">Select…</option>
+                                    <option value="1">Rarely</option>
+                                    <option value="2">Sometimes</option>
+                                    <option value="3">Often</option>
+                                    <option value="4">Almost always</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>5. I’m more irritable, numb or “on edge” than usual.</label>
+                                <select name="q5" required>
+                                    <option value="">Select…</option>
+                                    <option value="1">Rarely</option>
+                                    <option value="2">Sometimes</option>
+                                    <option value="3">Often</option>
+                                    <option value="4">Almost always</option>
+                                </select>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">View Reflection</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="contact-right">
+                    <div class="contact-info" id="burnout-result">
+                        <h3>Your Reflection</h3>
+                        <p>Complete the questions to see a short reflection on how burnout may be showing up for you.</p>
+                        <p style="font-size:0.85rem;margin-top:1rem;color:#6B7280;">
+                            This tool is for information only and does not replace medical or psychological assessment.
+                            If you are concerned about your wellbeing, consider reaching out for professional support.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('burnout-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const form = e.target;
+            let score = 0;
+            for (let i = 1; i <= 5; i++) {
+                score += parseInt(form['q' + i].value || '0', 10);
+            }
+
+            const resultBox = document.getElementById('burnout-result');
+            let heading = 'Your Reflection';
+            let message = '';
+
+            if (score <= 7) {
+                heading = 'Burnout Risk: Lower';
+                message = 'You may still be under pressure, but your current responses suggest that burnout may not be at a critical level right now. It can still be helpful to keep an eye on your energy, boundaries and recovery time.';
+            } else if (score <= 13) {
+                heading = 'Burnout Risk: Emerging';
+                message = 'Some burnout patterns may be starting to show up. You might notice more fatigue, tension or emotional exhaustion than usual. Small, consistent changes in rest, support and workload can make a meaningful difference.';
+            } else {
+                heading = 'Burnout Risk: Elevated';
+                message = 'Your answers suggest that burnout may be significantly affecting your wellbeing. You do not have to manage this alone. Consider reaching out for professional support or speaking with someone you trust about what you are experiencing.';
+            }
+
+            resultBox.innerHTML = `
+                <h3>${heading}</h3>
+                <p>${message}</p>
+                <p style="font-size:0.85rem;margin-top:1rem;color:#6B7280;">
+                    This self‑check cannot diagnose burnout or any mental health condition.
+                    If you feel overwhelmed, hopeless, or at risk of harming yourself, please seek immediate help in your area.
+                </p>
+            `;
+        });
+    </script>
+</body>
+
+</html>

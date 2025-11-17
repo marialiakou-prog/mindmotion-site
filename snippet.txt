@@ -1,0 +1,16 @@
+                    <p>Specializing in corporate mental health, anxiety, burnout, and therapeutic intervention.</p>
+                    <a href="#services" class="btn-link">My Services →</a>
+                </div>
+
+                <div class="partner-card">
+                    <div class="partner-photo">👤</div>
+                    <h3>[Partner Name]</h3>
+                    <p class="partner-title">Stress Management Consultant</p>
+                    <p>Specializing in work-life balance, practical stress reduction, and coaching.</p>
+                    <a href="https://partner-website.com" class="btn-link" target="_blank">Visit Website →</a>
+                </div>
+            </div>
+
+            <div class="partnership-benefits">
+                <h3>Why Our Partnership Works</h3>
+                <ul>
