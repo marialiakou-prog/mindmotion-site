@@ -818,14 +818,18 @@ img {
     margin: 0 var(--space-xs);
 }
 
+.footer-partner {
+    padding-left: 6rem;
+}
+
 @media (max-width: 768px) {
     .footer-content {
         grid-template-columns: 1fr;
     }
-}
 
-.footer-partner {
-    padding-left: 6rem;
+    .footer-partner {
+        padding-left: 0;
+    }
 }
 
 /* ==================== ANIMATIONS ==================== */
