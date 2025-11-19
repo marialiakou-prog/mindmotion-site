@@ -97,6 +97,11 @@ a:hover {
     color: var(--color-secondary);
 }
 
+/* Keep MindMotion brand color on hover */
+.nav-brand:hover {
+    color: var(--color-primary);
+}
+
 ul {
     list-style: none;
 }
